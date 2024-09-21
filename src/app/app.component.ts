@@ -9,5 +9,17 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-course-2024';
+  title:number = 80;
+
+  constructor(){
+    console.log('substract ', this.substract(8,4))
+  }
+
+  public sum(num1: number, num2: number): number {
+    return num1 + num2 //a veces pide punto y coma y a veces no
+  }
+
+  private substract(num1: number, num2: number): number{
+    return num1 - num2
+  }
 }
