@@ -19,7 +19,15 @@ export class AppComponent {
     return num1 + num2 //a veces pide punto y coma y a veces no
   }
 
-  private substract(num1: number, num2: number): number{
+  public substract(num1: number, num2: number): number{
     return num1 - num2
+  }
+
+  public getArray(): void {
+    const person: number[] = [1, 2, 3, 4, 5];
+    const evenPersons = person.filter(p => p % 2 === 0);
+    for (let i = 0; i < evenPersons.length; i++) {
+      console.log('person = ', evenPersons[i]);
+    }
   }
 }
