@@ -19,21 +19,38 @@ export class AppComponent {
   animals:string[] = ['a','b','c','d','e','f','g']
 
   person: IPerson = {
-    name: 'a',
-    lastName: 'b'
+    name: 'Juan',
+    lastName: 'Perez',
+    age: 25
   }
+
+  students:number[] = [1,2,3,4,5,6]
+  parents:number[] = [7,8,9,10]
 
   constructor(){
-    console.log('substract ', this.substract(8,4))
+    const { name, age } = this.person
+    console.log('desestructuracion', name, age)
 
-    console.log('MAP:', this.animals.map( (animal:string) => ( animal + 'new')    ))
-    console.log('FOREACH:', this.animals.forEach( (animal) => ( animal + 'new')    ))
-    console.log('FIND', this.animals.find((animal)=>  animal === 'z'))
-    console.log('FILTER', this.animals.filter((animal)=>  animal === 'z'))
-    console.log('INDEXOF', this.animals.indexOf('c'))
+    let both = [...this.students, ...this.parents]
+    console.log('spread operator', both)
+
+    console.log('REST operator', this.sum(2,4,6))
+
+    //console.log('substract ', this.substract(8,4))
+
+    //console.log('MAP:', this.animals.map( (animal:string) => ( animal + 'new')    ))
+    //console.log('FOREACH:', this.animals.forEach( (animal) => ( animal + 'new')    ))
+    //console.log('FIND', this.animals.find((animal)=>  animal === 'z'))
+    //console.log('FILTER', this.animals.filter((animal)=>  animal === 'z'))
+    //console.log('INDEXOF', this.animals.indexOf('c'))
   }
 
-  public sum(num1: number, num2: number): number {
+  public sum(...persons:number[]){
+    //return persons[0] + persons[1]
+    return persons.reduce((acc, current) => acc + current)
+  }
+
+  public sum2(num1: number, num2: number): number {
     return num1 + num2 //a veces pide punto y coma y a veces no
   }
 
