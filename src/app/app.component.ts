@@ -90,4 +90,8 @@ export class AppComponent {
   // arrow functions
   //  const resta = () => ('hola' + a)
 
+  public receiveData(data:any){
+    console.log('Print data: ', data)
+  }
+
 }

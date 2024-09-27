@@ -3,4 +3,9 @@
 <p>Subtract {{ substract(3,5) }}</p>
 <p>Only Pares {{getArray()}}</p>
 
-<app-user-card [name]="'Karim'" [email]="'karim@gmail.com'" ></app-user-card>
+<app-user-card
+  [name]="'Karim'"
+  [email]="'karim@gmail.com'"
+  (sendData)="receiveData($event)"
+  >
+</app-user-card>
