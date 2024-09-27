@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {UserCardComponent} from "./user-card/user-card.component";
+import {CalculatorComponent} from "./calculator/calculator.component";
+import {HistoryComponent} from "./history/history.component";
 
 interface IPerson {
   name:string
@@ -11,18 +13,20 @@ interface IPerson {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent],
+  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, HistoryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  result:number = 0;
   title:number = 80;
+  history: number[] = [];
   animals:string[] = ['a','b','c','d','e','f','g']
 
   person: IPerson = {
     name: 'Juan',
     lastName: 'Perez',
-    age: 25
+    age: 25,
   }
 
   students:number[] = [1,2,3,4,5,6]
@@ -92,6 +96,12 @@ export class AppComponent {
 
   public receiveData(data:any){
     console.log('Print data: ', data)
+  }
+
+  public onResult(event:any){
+    console.log('event of child: ', event)
+    this.result = event
+    this.history.push(event);
   }
 
 }
