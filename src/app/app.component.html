@@ -3,11 +3,9 @@
 <p>Subtract {{ substract(3,5) }}</p>
 <p>Only Pares {{getArray()}}</p>
 
-<app-user-card
-  [name]="'Karim'"
-  [email]="'karim@gmail.com'"
-  (sendData)="receiveData($event)"
-  >
+<app-user-card [name]="'Karim'" [email]="'karim@gmail.com'" (sendData)="receiveData($event)">
+  <p>My HTML from father</p>
+  <button>My button from father</button>
 </app-user-card>
 <p>RESULT: {{result}}</p>
 <calculator
@@ -21,3 +19,8 @@
   [history]="history"
   >
 </history>
+
+<p *ngIf="1 === 1"> variables are equals </p>
+@if(1 === 1) {
+  <p> new Sintax, variables are equals </p>
+}
