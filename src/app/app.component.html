@@ -9,3 +9,12 @@
 </div>
 
 <button (click)="deletePersonsWithDiscount()">Borrar personas con descuento</button>
+<button (click)="userCardCreated = !userCardCreated">create and destroy user card</button>
+@if(userCardCreated) {
+  <user-card name="juan" [email]="'juan@gmail.com'" (sendData)="receiveData($event)">
+    <p>My HTML from father</p>
+    <button>My button from father</button>
+  </user-card>
+} @else {
+  <p>user card destroyed</p>
+}

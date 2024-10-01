@@ -21,6 +21,8 @@ export interface IPerson {
 })
 
 export class AppComponent {
+  userCardCreated: boolean = true
+
   persons: IPerson[] = [
     { name: 'Karim', gender: 'female', age: 19 },
     { name: 'Juan', gender: 'male', age: 15 },
@@ -46,5 +48,9 @@ export class AppComponent {
 
   hasDiscount(person: IPerson): boolean {
     return person.age > 18;
+  }
+
+  public receiveData(data:any){
+    console.log('Print in father component: ', data)
   }
 }
