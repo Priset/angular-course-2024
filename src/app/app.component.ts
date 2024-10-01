@@ -21,7 +21,13 @@ export interface IPerson {
 })
 
 export class AppComponent {
+
+  users = [{ name: 'abc', 'email': 'abc@gmail.com' }, { name: 'dfg', 'email': 'dfg@gmail.com' }]
+  selectedUser:any = this.users[0];
+
   userCardCreated: boolean = true
+
+  result:number = 0;
 
   persons: IPerson[] = [
     { name: 'Karim', gender: 'female', age: 19 },
