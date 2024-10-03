@@ -1,5 +1,8 @@
 import {
-  AfterContentInit, AfterViewInit,
+  AfterContentInit,
+  afterNextRender,
+  afterRender,
+  AfterViewInit,
   Component,
   DoCheck, ElementRef,
   EventEmitter,
@@ -26,9 +29,10 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
 
   @Output() sendData = new EventEmitter();
 
-  @ViewChild('buttonTest') buttonTest!: ElementRef
+  @ViewChild('buttonTest', { static: false }) buttonTest!: ElementRef
+  @ViewChild('buttonShow', { static: true }) buttonShow!: ElementRef
   password: string = "";
-  showButton:boolean = false
+  showButton:boolean = true
 
   constructor() {
     console.log("user card constructor");
@@ -36,6 +40,7 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
 
   ngOnInit(): void {
     console.log("user card on init");
+    this.buttonShow.nativeElement.textContent = 'button Show in OnInit'
   }
   ngOnDestroy(): void {
     console.log("user card Destroy");
@@ -62,7 +67,9 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
   ngAfterViewInit(): void {
     console.log('NG AFTER VIEW INIT')
     console.log('BUTTON TEST', this.buttonTest)
-    this.buttonTest.nativeElement.textContent = 'aaaaaaaaaaaaaaaaaaaaaa'
+    if(this.buttonTest){
+      this.buttonTest.nativeElement.textContent = 'button Test in ngAfterViewInit'
+    }
   }
 
   public onSendData() {
