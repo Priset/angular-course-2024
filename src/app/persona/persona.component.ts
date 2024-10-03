@@ -1,10 +1,11 @@
 import {Component, Input} from '@angular/core';
 import { IPerson } from '../app.component';
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-persona',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './persona.component.html',
   styleUrl: './persona.component.scss'
 })
