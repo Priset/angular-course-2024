@@ -1,29 +1,41 @@
+import { CommonModule } from "@angular/common";
 import {
   AfterContentChecked,
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
   Component,
-  DoCheck, ElementRef,
+  DoCheck,
+  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges, ViewChild
-} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+  SimpleChanges,
+  ViewChild,
+} from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'user-card',
+  selector: "user-card",
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: "./user-card.component.html",
-  styleUrl: "./user-card.component.scss"
+  styleUrl: "./user-card.component.scss",
 })
-export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, AfterViewInit{
-
+export class UserCardComponent
+  implements
+    OnInit,
+    OnDestroy,
+    OnChanges,
+    DoCheck,
+    AfterContentInit,
+    AfterViewInit,
+    AfterContentChecked,
+    AfterViewChecked
+{
   @Input() name: string = "";
   @Input() email: string = "";
 
@@ -31,7 +43,8 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
 
   @ViewChild('buttonTest', { static: false }) buttonTest!: ElementRef
   @ViewChild('buttonShow', { static: true }) buttonShow!: ElementRef
-  password: string = "";
+
+  password: string = "password";
   showButton:boolean = true
 
   constructor() {
@@ -40,12 +53,15 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
 
   ngOnInit(): void {
     //console.log("user card on init");
+
     this.buttonShow.nativeElement.textContent = 'button Show in OnInit'
+
+    // this.password = this.name + ' ' +  this.email + ' PASSWORD'
   }
+
   ngOnDestroy(): void {
     //console.log("user card Destroy");
   }
-
 
   ngOnChanges(changes: SimpleChanges): void {
     //console.log("CHANGES:", changes);
@@ -60,20 +76,23 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
   ngDoCheck(): void {
     //console.log("DO CHECK user card");
   }
+
   ngAfterContentInit(): void {
     //console.log("NG AFTER CONTENT INIT");
   }
 
   ngAfterContentChecked(): void {
-    console.log('AFTER CONTENT CHECKED')
+    //console.log('AFTER CONTENT CHECKED')
   }
 
   ngAfterViewInit(): void {
     //console.log('NG AFTER VIEW INIT')
     //console.log('BUTTON TEST', this.buttonTest)
+
     if(this.buttonTest){
       this.buttonTest.nativeElement.textContent = 'button Test in OnInit'
     }
+
   }
 
   ngAfterViewChecked(): void {
