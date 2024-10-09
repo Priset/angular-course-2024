@@ -1,63 +1,128 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {UserCardComponent} from "./user-card/user-card.component";
-import {CalculatorComponent} from "./calculator/calculator.component";
-import {HistoryComponent} from "./history/history.component";
-import {CommonModule} from "@angular/common";
-import {PersonaComponent} from "./persona/persona.component";
-import {CounterComponent} from "./counter/counter.component";
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { UserCardComponent } from "./user-card/user-card.component";
+import { CalculatorComponent } from "./calculator/calculator.component";
+import { CommonModule } from "@angular/common";
+import { CounterComponent } from "./counter/counter.component";
+import { filter, from, map, tap } from "rxjs";
 
-export interface IPerson {
+interface IPerson {
   name: string;
-  gender: 'male' | 'female';
-  age: number;
+  lastName: string;
+  age?: number;
 }
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, HistoryComponent, CommonModule, PersonaComponent, CounterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [
+    RouterOutlet,
+    UserCardComponent,
+    CalculatorComponent,
+    CommonModule,
+    CounterComponent,
+  ],
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
-
 export class AppComponent {
-
-  users = [{ name: 'abc', 'email': 'abc@gmail.com' }, { name: 'dfg', 'email': 'dfg@gmail.com' }]
-  selectedUser:any = this.users[0];
-
-  userCardCreated: boolean = true
-
-  result:number = 0;
-
-  persons: IPerson[] = [
-    { name: 'Karim', gender: 'female', age: 19 },
-    { name: 'Juan', gender: 'male', age: 15 },
-    { name: 'Ana', gender: 'female', age: 20 },
-    { name: 'Lucia', gender: 'female', age: 25 },
+  users = [
+    { name: "abc", email: "abc@gmail.com" },
+    { name: "dfg", email: "dfg@gmail.com" },
   ];
+  selectedUser: any = this.users[0];
 
-  get totalFemales(): number {
-    return this.persons.filter(person => person.gender === 'female').length;
+  userCardCreated: boolean = true;
+
+  result: number = 0;
+  title: number = 10;
+  animals: string[] = ["a", "b", "c", "d", "e", "f", "g"];
+
+  person: IPerson = {
+    name: "Juan",
+    lastName: "Perez",
+    age: 25,
+  };
+  students: number[] = [1, 2, 3, 4, 5, 6];
+  parents: number[] = [7, 8, 9, 10];
+
+  var1 = 0;
+  var2 = null;
+  var3 = "hola";
+
+  youtube = from([1, 2, 3, 4, 5, 6]);
+
+  constructor() {
+    const { name, age } = this.person;
+    let both = [...this.students, ...this.parents];
+
+    this.youtube.subscribe((res) => {
+      console.log("SUSCRIBER 1: ", res);
+    });
+  }
+  public sum(...persons: number[]) {
+    //return persons[0] + persons[1]
+    return persons.reduce(
+      (acumulador, valorActual) => acumulador + valorActual,
+      10
+    );
   }
 
-  get totalMales(): number {
-    return this.persons.filter(person => person.gender === 'male').length;
+  addVideo() {
+    this.youtube
+      .pipe(
+        map((res: number) => {
+          //console.log("MAP OPERATOER RXJS: ", res);
+          if (res % 2 === 0) {
+            return res;
+          } else {
+            return null
+          }
+        }),
+        tap((res)  => {console.log('VALUE: ', res)}),
+        filter((res: number | null) => res !== null),
+      )
+      .subscribe((res) => {
+        console.log("SUSCRIBER 2: ", res);
+      });
   }
 
-  get totalDiscounts(): number {
-    return this.persons.filter(person => person.age > 18).length;
+  public sum2(num1: number, num2: number): number {
+    return num1 + num2;
   }
 
-  deletePersonsWithDiscount(): void {
-    this.persons = this.persons.filter(person => person.age <= 18);
+  private subtract(num1: number, num2: number): number {
+    return num1 - num2;
   }
 
-  hasDiscount(person: IPerson): boolean {
-    return person.age > 18;
+  public getArray(): void {
+    const persons: number[] = [1, 2, 3, 4, 5];
+    for (let i = 0; i < persons.length; i++) {
+      //console.log('person =', persons[i])
+    }
   }
 
-  public receiveData(data:any){
-    console.log('Print in father component: ', data)
+  //  function sumar(){
+  //   return 1 + 2;
+  //  }
+
+  //  const suma = () => {
+  //   return 1 + 2
+  //  }
+
+  //  function resta(){
+  //   return 'hola' + a
+  //  }
+
+  // arrow functions
+  //  const resta = () => ('hola' + a)
+
+  public receiveData(data: any) {
+    console.log("Print in father component: ", data);
+  }
+
+  public onResult(event: any) {
+    console.log("event from child:", event);
+    this.result = event ?? 0;
   }
 }
