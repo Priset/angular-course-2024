@@ -1,13 +1,56 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { data } from './data';
+import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {SearchComponent} from "./search/search.component";
+import {ListComponent} from "./list/list.component";
+import {CardComponent} from "./card/card.component";
+
+export interface Person {
+  id: number;
+  name: string;
+  type: 'Student' | 'Professor';
+  score?: {
+    firstTestScore: number;
+    secondTestScore: number;
+    finalTestScore: number;
+  };
+  subject?: string;
+  address: string;
+  country: string;
+  province: string;
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, FormsModule, SearchComponent, ListComponent, CardComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-course-2024';
+  title: string = 'Examen Primer Parcial Angular';
+  items: Person[] = data;
+  filteredItems: Person[] = data;
+  selectedItem: Person | null = null;
+  searchQuery: string = '';
+
+  searchItems(query: string) {
+    this.filteredItems = this.items.filter(item =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+
+  showItem(item: Person) {
+    this.selectedItem = item;
+  }
+
+
+  deleteItem(itemId: number) {
+    this.items = this.items.filter(item => item.id !== itemId);
+    this.filteredItems = this.items;
+    if (this.selectedItem && this.selectedItem.id === itemId) {
+      this.selectedItem = null;
+    }
+  }
 }
