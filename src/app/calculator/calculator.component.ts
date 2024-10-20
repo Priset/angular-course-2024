@@ -7,12 +7,23 @@ import {FormsModule} from "@angular/forms";
   imports: [
     FormsModule
   ],
-  templateUrl: './calculator.component.html',
+  template: `
+    <div class="calculator">
+      <p>Calculator</p>
+      <input type="text" [(ngModel)]="box1Value" >
+      <input type="text" [(ngModel)]="box2Value">
+      <div class="buttons-container">
+          <button class="sum" (click)="onSum()">Sum</button>
+          <button class="mul" (click)="onMul()">Mul</button>
+          <button class="reset" (click)="onReset()">Reset</button>
+      </div>
+    </div>
+  `,
   styleUrl: './calculator.component.scss'
 })
 export class CalculatorComponent {
 
-  boxValue:number = 0
+  box1Value:number = 0
   box2Value:number = 0
 
   @Output() sum = new EventEmitter()
@@ -20,15 +31,15 @@ export class CalculatorComponent {
   @Output() reset = new EventEmitter()
 
   public onSum(){
-    this.sum.emit(Number(this.boxValue) + Number(this.box2Value))
+    this.sum.emit(Number(this.box1Value) + Number(this.box2Value))
   }
 
   public onMul(){
-    this.mul.emit(Number(this.boxValue) * Number(this.box2Value))
+    this.mul.emit(Number(this.box1Value) * Number(this.box2Value))
   }
 
   public onReset(){
-    this.boxValue = 0
+    this.box1Value = 0
     this.box2Value = 0
     this.reset.emit(null)
   }
