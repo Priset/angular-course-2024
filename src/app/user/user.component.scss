@@ -1,0 +1,132 @@
+.tab-container {
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+}
+
+.tab-btn.active {
+  background-color: #0056b3;
+}
+
+.tab-content {
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.subscription-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.subscription-btn {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.subscription-btn.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.subscription-btn:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.network-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Estilos comunes para todas las tarjetas de redes sociales */
+.network-card {
+  background-color: #f8f9fa; /* Fondo común */
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  width: 150px;
+  text-align: center;
+  position: relative;
+  color: black;  /* Color de texto por defecto */
+}
+
+/* Cambia el color del texto a blanco y el fondo a púrpura solo para TikTok */
+.network-card.tiktok {
+  background-color: #0e0e10;  /* Fondo púrpura para TikTok */
+  color: white; /* Texto blanco para TikTok */
+}
+
+/* Añade colores específicos para otras plataformas */
+.network-card.youtube {
+  background-color: #FF0000; /* Fondo rojo para YouTube */
+}
+
+.network-card.facebook {
+  background-color: #1877f2; /* Fondo azul para Facebook */
+}
+
+.network-card.instagram {
+  background-color: #ea87f6; /* Fondo rosa para Instagram */
+}
+
+.network-card.whatsapp {
+  background-color: #25D366; /* Fondo verde para WhatsApp */
+}
+
+.add-btn, .remove-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-btn:hover {
+  background-color: #c82333;
+}
+
+.remove-btn {
+  background-color: #ffc107;
+}
+
+.remove-btn:hover {
+  background-color: #e0a800;
+}
+
+.close-account-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-account-btn:hover {
+  background-color: #c82333;
+}
