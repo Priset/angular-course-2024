@@ -63,4 +63,9 @@ export class UserComponent {
   getNetworkColor(platform: string): string {
     return this.networkColors[platform] || '#ddd';
   }
+
+  isAccountInactive(): boolean {
+    return this.user.status === 'inactive';
+  }
+
 }

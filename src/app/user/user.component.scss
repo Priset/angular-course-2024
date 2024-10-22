@@ -55,13 +55,13 @@
   cursor: not-allowed;
 }
 
+/* Redes Sociales */
 .network-list {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
 
-/* Estilos comunes para todas las tarjetas de redes sociales */
 .network-card {
   background-color: #f8f9fa; /* Fondo común */
   border: 1px solid #ddd;
@@ -75,7 +75,7 @@
 
 /* Cambia el color del texto a blanco y el fondo a púrpura solo para TikTok */
 .network-card.tiktok {
-  background-color: #0e0e10;  /* Fondo púrpura para TikTok */
+  background-color: #6f42c1;  /* Fondo púrpura para TikTok */
   color: white; /* Texto blanco para TikTok */
 }
 
@@ -89,7 +89,7 @@
 }
 
 .network-card.instagram {
-  background-color: #ea87f6; /* Fondo rosa para Instagram */
+  background-color: #E4405F; /* Fondo rosa para Instagram */
 }
 
 .network-card.whatsapp {
@@ -118,6 +118,13 @@
   background-color: #e0a800;
 }
 
+.add-btn:disabled, .remove-btn:disabled {
+  background-color: #e0e0e0;
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+/* Botón de cerrar cuenta */
 .close-account-btn {
   background-color: #dc3545;
   color: white;
@@ -129,4 +136,11 @@
 
 .close-account-btn:hover {
   background-color: #c82333;
+}
+
+/* Mensaje de cuenta inactiva */
+.inactive-message {
+  color: #dc3545;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
