@@ -136,6 +136,11 @@ export class AppComponent {
       console.log('FORM GROUP OBSERVABLE: ', res)
     })
   }
+
+  print(){
+    console.log('FORM NAME: ', this.studentForm.get('name'))
+  }
+
   onSendData() {
     console.log('FORM GROUP: ', this.studentForm)
 
