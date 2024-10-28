@@ -12,7 +12,8 @@ export const routes: Routes = [
   },
   {
     path: 'cal',
-    component: CalculatorComponent
+    component: CalculatorComponent,
+    canDeactivate: [GuardForm]
   },
   {
     path: 'counter-nav',
