@@ -17,9 +17,9 @@ import {
   ViewChild,
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import {SharedModule} from "../shared-module/shared-module.module";
-import {Subscription} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import { SharedModule } from "../shared/shared.module";
+import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "user-card",
@@ -51,20 +51,22 @@ export class UserCardComponent
   showButton:boolean = true
 
   subscription: Subscription = new Subscription();
+
   constructor(private activatedRoute: ActivatedRoute) {
     //console.log("user card constructor");
+
     this.subscription.add(this.activatedRoute.params.subscribe((params) => {
       console.log("PARAMS: ", params);
     }))
-
-    console.log('Snapshot: ', this.activatedRoute.snapshot.params )
+  
+    console.log('Snapshot: ', this.activatedRoute.snapshot.params )   
   }
 
   ngOnInit(): void {
     //console.log("user card on init");
 
     this.buttonShow.nativeElement.textContent = 'button Show in OnInit'
-
+    
     // this.password = this.name + ' ' +  this.email + ' PASSWORD'
   }
 
@@ -98,12 +100,12 @@ export class UserCardComponent
 
   ngAfterViewInit(): void {
     //console.log('NG AFTER VIEW INIT')
-    //console.log('BUTTON TEST', this.buttonTest)
+    //console.log('BUTTON TEST', this.buttonTest)   
 
     if(this.buttonTest){
       this.buttonTest.nativeElement.textContent = 'button Test in OnInit'
     }
-
+    
   }
 
   ngAfterViewChecked(): void {

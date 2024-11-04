@@ -1,19 +1,23 @@
 .calculator {
-  border: 1px green solid;
-  padding: 20px;
+    border: 1px green solid;
+    padding: 20px;
 
-  .buttons-container{
-    display: flex;
-    flex-direction: row;
+    .buttons-container {
+       display: flex;
+       flex-direction: row;
+       
+       .sum {
+        background-color: yellow;
+       }
+       .mul{
+        background-color: papayawhip;
+       }
+       .reset{
+        background-color: aqua;
+       }
+        
+    }
 
-    .sum {
-      background-color: yellow;
-    }
-    .mul {
-      background-color: papayawhip;
-    }
-    .reset {
-      background-color: aqua;
-    }
-  }
+
+
 }

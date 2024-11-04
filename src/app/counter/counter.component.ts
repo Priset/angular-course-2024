@@ -32,7 +32,7 @@ export class CounterComponent {
         const newBackground = this.appBackground
         console.log('FROM read: ', newBackground)
       },
-    })
+  })
 
     afterNextRender(() => {
       console.log('AFTER NEXT RENDER: ', this.sum)

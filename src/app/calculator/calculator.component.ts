@@ -1,7 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {AuthService} from "../auth.service";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'calculator',
@@ -23,7 +23,7 @@ import {AuthService} from "../auth.service";
   `,
   styleUrl: './calculator.component.scss'
 })
-export class CalculatorComponent implements OnInit{
+export class CalculatorComponent implements OnInit {
 
   box1Value:number = 0
   box2Value:number = 0
@@ -36,11 +36,13 @@ export class CalculatorComponent implements OnInit{
               private _authService: AuthService,
               private _router: Router
   ) { }
+
   ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe(params => {
-      console.log('query params: ', params)
-    })
-    console.log('query params snapshot: ', this._activatedRoute.snapshot.queryParams)
+      this._activatedRoute.queryParams.subscribe(params => {
+        console.log('query params: ', params)
+      })
+
+      console.log('query params snapshot: ', this._activatedRoute.snapshot.queryParams)
   }
 
   public onSum(){

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {ExamService} from "../exam.service";
+import { ExamService } from '../exam.service';
+
 @Component({
   selector: 'app-classmate',
   templateUrl: './classmate.component.html',
@@ -8,7 +9,8 @@ import {ExamService} from "../exam.service";
 export class ClassmateComponent {
 
   newScores:number[] = []
-  constructor(private _examService: ExamService) {
+
+  constructor(private _examService: ExamService) { 
     this._examService.getScoresAsObservable().subscribe(scores => {
       console.log('SCORES: ', scores)
       this.newScores = scores
