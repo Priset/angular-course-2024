@@ -1,16 +1,20 @@
+body {
+  background-color: #e5f5f1;
+}
+
 .city-list-container {
   max-width: 400px;
   margin: 20px auto;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 h2 {
   text-align: center;
-  color: #333;
+  color: #184d47;
   margin-bottom: 20px;
 }
 
@@ -25,15 +29,17 @@ input[type="text"] {
   flex: 1;
   padding: 8px;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #a3d9c8;
   border-radius: 4px;
+  background-color: #f0fcfa;
+  color: #184d47;
 }
 
 button {
   padding: 8px 12px;
   font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
+  color: #ffffff;
+  background-color: #1abc9c;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -41,11 +47,11 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #16a085;
 }
 
 .error {
-  color: #dc3545;
+  color: #e74c3c;
   font-size: 0.9rem;
   margin-top: 5px;
 }
@@ -57,14 +63,24 @@ button:hover {
 }
 
 .city-list li {
-  background-color: #e9ecef;
+  background-color: #d4f1ed;
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
   transition: background-color 0.3s;
+  color: #184d47;
 }
 
 .city-list li:hover {
-  background-color: #ced4da;
+  background-color: #b9e6dd;
+}
+
+.app-title {
+  text-align: center;
+  color: #184d47;
+  font-size: 2rem;
+  margin-top: 20px;
+  font-weight: bold;
 }

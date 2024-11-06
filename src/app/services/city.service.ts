@@ -36,7 +36,7 @@ export class CityService {
     if (cities.some(city => city.name.toLowerCase() === cityName.toLowerCase())) {
       return false;
     }
-    const newCity = { id: cities.length + 1, name: cityName };
+    const newCity = { id: this.getNextCityId(cities), name: cityName };
     cities.push(newCity);
     this.saveCitiesToLocalStorage(cities);
     return true;
@@ -56,5 +56,10 @@ export class CityService {
   private saveCitiesToLocalStorage(cities: { id: number; name: string }[]) {
     const sortedCities = cities.sort((a, b) => a.name.localeCompare(b.name));
     localStorage.setItem(this.citiesKey, JSON.stringify(sortedCities));
+  }
+
+  private getNextCityId(cities: { id: number; name: string }[]): number {
+    const maxId = cities.reduce((max, city) => Math.max(max, city.id), 0);
+    return maxId + 1;
   }
 }

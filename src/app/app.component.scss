@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e5f5f1;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #184d47;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
