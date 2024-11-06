@@ -25,19 +25,25 @@ export class CityListComponent implements OnInit {
   }
 
   async addCity() {
-    // Verificar si el nombre de la ciudad excede el límite de caracteres
-    if (this.newCityName.length > this.maxCityNameLength) {
+    // Validación para nombres vacíos o solo con espacios
+    if (this.newCityName.trim() === '') {
+      this.errorMessage = 'City name cannot be empty!';
+      return;
+    }
+
+    // Validación para nombres que exceden el límite de caracteres
+    if (this.newCityName.trim().length > this.maxCityNameLength) {
       this.maxLengthMessage = `City name cannot exceed ${this.maxCityNameLength} characters.`;
       return;
     }
 
     this.maxLengthMessage = '';
+    this.errorMessage = '';
 
     const success = await this.cityService.addCity(this.newCityName.trim());
     if (success) {
       this.cities = await this.cityService.getCities();
       this.newCityName = '';
-      this.errorMessage = '';
     } else {
       this.errorMessage = 'City already exists!';
     }
